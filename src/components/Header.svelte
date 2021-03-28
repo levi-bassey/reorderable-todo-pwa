@@ -1,23 +1,18 @@
 <script>
+  import { nanoid } from "nanoid";
   import bgMobileLight from "../assets/bg-mobile-light.jpg";
   import Checkbox from "../components/Checkbox.svelte";
+  import todos from "../todoStore.js";
 
-  export let createTodo;
-  export let completeAllTodos;
-  export let allTodosAreCompleted;
-
-  let todo = "";
+  let todoInput = "";
 
   function handleSubmit() {
-    createTodo({
-      todo,
+    todos.createTodo({
+      id: nanoid(),
+      todo: todoInput,
       isCompleted: false,
     });
-    todo = "";
-  }
-
-  function handleInput() {
-    completeAllTodos();
+    todoInput = "";
   }
 </script>
 
@@ -46,12 +41,7 @@
     </button>
   </div>
   <div class="flex items-center px-5 mt-10 bg-white rounded-md">
-    <Checkbox
-      id="allTodosAreCompleted"
-      name="allTodosAreCompleted"
-      checked={allTodosAreCompleted}
-      on:input={handleInput}
-    />
+    <Checkbox id="allTodosAreCompleted" name="allTodosAreCompleted" />
     <form
       on:submit|preventDefault={handleSubmit}
       class="self-stretch flex-grow"
@@ -60,7 +50,7 @@
         type="text"
         name="todo"
         id="todo"
-        bind:value={todo}
+        bind:value={todoInput}
         placeholder="Create new todo..."
         class="ml-3 py-5 w-full focus:outline-none text-dark-700 placeholder-light-400"
       />

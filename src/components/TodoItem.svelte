@@ -1,24 +1,33 @@
 <script>
   import Checkbox from "../components/Checkbox.svelte";
+  import todoList from "../todoStore.js";
 
-  export let deleteTodo;
-  export let completeTodo;
   export let todoItem;
 
   $: ({ todo, isCompleted } = todoItem);
 
-  function handleClick() {
-    deleteTodo(todoItem);
+  function handleDragstart(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
   }
 
-  function handleInput() {
-    completeTodo(todoItem);
+  function handleDrop(event) {
+    const idOfDragged = event.dataTransfer.getData("text/plain");
+    const index1 = $todoList.findIndex((todo) => todo.id === idOfDragged);
+    const index2 = $todoList.findIndex((todo) => todo.id === event.target.id);
+    todoList.swapTodos(index1, index2);
   }
 </script>
 
-<li class="flex items-center px-5 py-4 border-b border-light-200">
+<li
+  id={todoItem.id}
+  draggable="true"
+  on:dragstart={handleDragstart}
+  on:dragover|preventDefault
+  on:drop={handleDrop}
+  class="flex items-center px-5 py-4 border-b border-light-200"
+>
   <Checkbox
-    on:input={handleInput}
+    on:input={todoList.completeTodo(todoItem)}
     checked={isCompleted}
     id="isCompleted"
     name="isCompleted"
@@ -30,7 +39,7 @@
   >
     {todo}
   </p>
-  <button on:click={handleClick} class="ml-auto">
+  <button on:click={() => todoList.deleteTodo(todoItem)} class="ml-auto">
     <svg class="w-3 h-3 fill-current text-light-500" viewBox="0 0 12 12">
       <path
         fill-rule="evenodd"
