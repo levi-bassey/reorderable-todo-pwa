@@ -22,14 +22,16 @@
   }
 </script>
 
-<div class="bg-white shadow-xl rounded-md">
+<div class="bg-white dark:bg-dark-200 shadow-xl rounded-md">
   <ul>
     {#each filteredList as todoItem (todoItem.id)}
       <TodoItem {todoItem} />
     {/each}
   </ul>
   {#if $todoList.length}
-    <div class="flex justify-between px-5 py-4 text-light-400">
+    <div
+      class="flex justify-between px-5 py-4 text-light-400 dark:text-dark-500"
+    >
       <p>
         {uncompletedTodosCount}
         {uncompletedTodosCount === 1 ? "item" : "items"} left
@@ -41,7 +43,7 @@
 
 {#if $todoList.length}
   <div
-    class="flex items-center justify-center mt-4 py-4 space-x-5 bg-white shadow-xl font-bold text-sm text-light-400"
+    class="flex items-center justify-center mt-4 py-4 space-x-5 rounded-md bg-white dark:bg-dark-200 shadow-xl font-bold text-sm text-light-400 dark:text-dark-500"
   >
     {#each filterationCriteria as criteria}
       <button

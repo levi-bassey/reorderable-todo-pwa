@@ -24,7 +24,7 @@
   on:dragstart={handleDragstart}
   on:dragover|preventDefault
   on:drop={handleDrop}
-  class="flex items-center px-5 py-4 border-b border-light-200"
+  class="flex items-center px-5 py-4 border-b border-light-200 dark:border-dark-700"
 >
   <Checkbox
     on:input={todoList.completeTodo(todoItem)}
@@ -34,8 +34,8 @@
   />
   <p
     class="ml-3 {isCompleted
-      ? 'text-light-300 line-through'
-      : 'text-light-500'}"
+      ? 'text-light-300 dark:text-dark-600 line-through'
+      : 'text-light-500 dark:text-dark-300'}"
   >
     {todo}
   </p>

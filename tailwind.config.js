@@ -8,7 +8,7 @@ module.exports = {
       ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
     ],
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "class", // or 'media' or 'class'
   theme: {
     fontFamily: {
       sans: ["Josefin\\ Sans", ...defaultTheme.fontFamily.sans],
@@ -39,6 +39,7 @@ module.exports = {
   variants: {
     extend: {
       borderWidth: ["checked"],
+      display: ["dark"],
     },
   },
   plugins: [],
