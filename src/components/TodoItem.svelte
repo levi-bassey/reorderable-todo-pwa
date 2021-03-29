@@ -18,7 +18,7 @@
   }
 </script>
 
-<li
+<div
   id={todoItem.id}
   draggable="true"
   on:dragstart={handleDragstart}
@@ -54,4 +54,4 @@
       />
     </svg>
   </button>
-</li>
+</div>
