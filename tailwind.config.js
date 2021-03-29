@@ -40,6 +40,7 @@ module.exports = {
     extend: {
       borderWidth: ["checked"],
       display: ["dark"],
+      visibility: ["group-hover"],
     },
   },
   plugins: [],

@@ -61,7 +61,7 @@
     </button>
   </div>
   <div
-    class="relative max-w-xl mx-auto flex items-center px-5 sm:px-6 mt-10 bg-white dark:bg-dark-200 rounded-md text-light-200 dark:text-dark-700"
+    class="relative max-w-xl mx-auto flex items-center px-5 sm:px-6 mt-10 bg-white dark:bg-dark-200 rounded-md text-light-200 focus-within:text-primary dark:focus-within:text-primary dark:text-dark-700"
   >
     <svg class="w-5 h-5 sm:h-6 sm:w-6 stroke-current" viewBox="0 0 20 20">
       <circle cx="10" cy="10" r="9.5" fill="transparent" />

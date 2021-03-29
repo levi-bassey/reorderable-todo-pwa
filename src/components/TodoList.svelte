@@ -45,12 +45,16 @@
               on:click={handleClick}
               name={criteria}
               class:text-primary={filterBy === criteria}
-              class="font-bold capitalize">{criteria}</button
+              class="font-bold capitalize hover:text-light-500 dark:hover:text-light-200"
+              >{criteria}</button
             >
           {/each}
         </div>
       </div>
-      <button on:click={todoList.clearCompleted}>Clear Completed</button>
+      <button
+        class="hover:text-light-500 dark:hover:text-light-200"
+        on:click={todoList.clearCompleted}>Clear Completed</button
+      >
     </div>
   {/if}
 </div>
@@ -64,7 +68,8 @@
         on:click={handleClick}
         name={criteria}
         class:text-primary={filterBy === criteria}
-        class="font-bold capitalize">{criteria}</button
+        class="font-bold capitalize hover:text-light-500 dark:hover:text-light-200"
+        >{criteria}</button
       >
     {/each}
   </div>
