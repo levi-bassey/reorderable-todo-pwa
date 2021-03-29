@@ -22,7 +22,7 @@
   }
 </script>
 
-<div class="bg-white dark:bg-dark-200 shadow-xl rounded-md">
+<div class="bg-white max-w-xl mx-auto dark:bg-dark-200 shadow-xl rounded-md">
   <ul>
     {#each filteredList as todoItem (todoItem.id)}
       <TodoItem {todoItem} />
@@ -30,12 +30,26 @@
   </ul>
   {#if $todoList.length}
     <div
-      class="flex justify-between px-5 py-4 text-light-400 dark:text-dark-500"
+      class="flex justify-between px-5 sm:px-6 py-4 sm:text-sm text-light-400 dark:text-dark-500"
     >
       <p>
         {uncompletedTodosCount}
         {uncompletedTodosCount === 1 ? "item" : "items"} left
       </p>
+      <div>
+        <div
+          class="hidden sm:flex max-w-xl mx-auto items-center justify-center space-x-5 font-bold"
+        >
+          {#each filterationCriteria as criteria}
+            <button
+              on:click={handleClick}
+              name={criteria}
+              class:text-primary={filterBy === criteria}
+              class="font-bold capitalize">{criteria}</button
+            >
+          {/each}
+        </div>
+      </div>
       <button on:click={todoList.clearCompleted}>Clear Completed</button>
     </div>
   {/if}
@@ -43,7 +57,7 @@
 
 {#if $todoList.length}
   <div
-    class="flex items-center justify-center mt-4 py-4 space-x-5 rounded-md bg-white dark:bg-dark-200 shadow-xl font-bold text-sm text-light-400 dark:text-dark-500"
+    class="flex sm:hidden max-w-xl mx-auto items-center justify-center mt-4 py-4 space-x-5 rounded-md bg-white dark:bg-dark-200 shadow-xl font-bold text-sm text-light-400 dark:text-dark-500"
   >
     {#each filterationCriteria as criteria}
       <button

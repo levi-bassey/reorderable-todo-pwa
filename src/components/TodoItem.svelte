@@ -24,7 +24,7 @@
   on:dragstart={handleDragstart}
   on:dragover|preventDefault
   on:drop={handleDrop}
-  class="flex items-center px-5 py-4 border-b border-light-200 dark:border-dark-700"
+  class="flex items-center px-5 sm:px-6 py-4 sm:py-6 border-b border-light-200 dark:border-dark-700"
 >
   <Checkbox
     on:input={todoList.completeTodo(todoItem)}
@@ -33,14 +33,17 @@
     name="isCompleted"
   />
   <p
-    class="ml-3 {isCompleted
+    class="ml-3 sm:ml-6 sm:text-lg {isCompleted
       ? 'text-light-300 dark:text-dark-600 line-through'
       : 'text-light-500 dark:text-dark-300'}"
   >
     {todo}
   </p>
   <button on:click={() => todoList.deleteTodo(todoItem)} class="ml-auto">
-    <svg class="w-3 h-3 fill-current text-light-500" viewBox="0 0 12 12">
+    <svg
+      class="w-3 h-3 sm:h-4 sm:w-4 fill-current text-light-500"
+      viewBox="0 0 12 12"
+    >
       <path
         fill-rule="evenodd"
         clip-rule="evenodd"

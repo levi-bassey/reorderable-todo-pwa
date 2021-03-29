@@ -13,5 +13,5 @@
   type="checkbox"
   {name}
   {id}
-  class="appearance-none w-5 h-5 rounded-full border-light-200 dark:border-dark-700 border checked:border-0 bg-no-repeat bg-center"
+  class="appearance-none w-5 h-5 sm:w-6 sm:h-6 rounded-full border-light-200 dark:border-dark-700 border checked:border-0 bg-no-repeat bg-center"
 />

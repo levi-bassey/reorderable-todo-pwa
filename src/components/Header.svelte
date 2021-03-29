@@ -17,20 +17,22 @@
   }
 </script>
 
-<header class="relative px-6 py-11">
+<header class="relative px-6 py-11 sm:pt-16 sm:pb-28">
   <!-- Background -->
   <div
-    style="background-image: url(images/bg-mobile-light.jpg)"
+    style="background-image: url(images/bg-desktop-light.jpg)"
     class="absolute inset-0 bg-no-repeat bg-cover dark:hidden"
   />
   <div
-    style="background-image: url(images/bg-mobile-dark.jpg)"
+    style="background-image: url(images/bg-desktop-dark.jpg)"
     class="hidden dark:block absolute inset-0 bg-no-repeat bg-cover"
   />
   <!-- Main content -->
-  <div class="relative flex items-center justify-between text-white">
+  <div
+    class="relative max-w-xl mx-auto flex items-center justify-between text-white"
+  >
     <a href="/"
-      ><svg class="w-28 h-5 fill-current" viewBox="0 0 109 20">
+      ><svg class="w-28 h-5 sm:w-40 sm:h-10 fill-current" viewBox="0 0 109 20">
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
@@ -40,7 +42,7 @@
     </a>
     <button on:click={toggleDarkMode}>
       {#if prefersDarkMode}
-        <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current" viewBox="0 0 20 20">
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -48,7 +50,7 @@
           />
         </svg>
       {:else}
-        <svg class="w-5 h-5 fill-current">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6 fill-current">
           <path
             fill-rule="evenodd"
             clip-rule="evenodd"
@@ -59,9 +61,9 @@
     </button>
   </div>
   <div
-    class="relative flex items-center px-5 mt-10 bg-white dark:bg-dark-200 rounded-md text-light-200 dark:text-dark-700"
+    class="relative max-w-xl mx-auto flex items-center px-5 sm:px-6 mt-10 bg-white dark:bg-dark-200 rounded-md text-light-200 dark:text-dark-700"
   >
-    <svg class="w-5 h-5 stroke-current" viewBox="0 0 20 20">
+    <svg class="w-5 h-5 sm:h-6 sm:w-6 stroke-current" viewBox="0 0 20 20">
       <circle cx="10" cy="10" r="9.5" fill="transparent" />
     </svg>
     <form
@@ -74,7 +76,7 @@
         id="todo"
         bind:value={todoInput}
         placeholder="Create new todo..."
-        class="ml-3 py-5 w-full focus:outline-none bg-transparent text-dark-700 dark:text-dark-300 placeholder-light-400 dark:placeholder-dark-500"
+        class="ml-3 sm:ml-6 py-5 sm:py-6 w-full focus:outline-none bg-transparent sm:text-lg text-dark-700 dark:text-dark-300 placeholder-light-400 dark:placeholder-dark-500"
       />
     </form>
   </div>
