@@ -4,22 +4,20 @@
 
   export let todoItem;
 
-  $: ({ todo, isCompleted } = todoItem);
+  $: ({ id, todo, isCompleted } = todoItem);
 
   function handleDragstart(event) {
-    event.dataTransfer.setData("text/plain", event.target.id);
+    event.dataTransfer.setData("text/plain", event.currentTarget.id);
   }
 
   function handleDrop(event) {
-    const idOfDragged = event.dataTransfer.getData("text/plain");
-    const index1 = $todoList.findIndex((todo) => todo.id === idOfDragged);
-    const index2 = $todoList.findIndex((todo) => todo.id === event.target.id);
-    todoList.swapTodos(index1, index2);
+    const idOfDraggedElement = event.dataTransfer.getData("text/plain");
+    todoList.reorderTodos(idOfDraggedElement, event.currentTarget.id);
   }
 </script>
 
 <div
-  id={todoItem.id}
+  {id}
   draggable="true"
   on:dragstart={handleDragstart}
   on:dragover|preventDefault
@@ -27,7 +25,7 @@
   class="group flex items-center px-5 sm:px-6 py-4 sm:py-6 border-b cursor-pointer border-light-200 dark:border-dark-700"
 >
   <Checkbox
-    on:input={todoList.completeTodo(todoItem)}
+    on:input={() => todoList.completeTodo(id)}
     checked={isCompleted}
     id="isCompleted"
     name="isCompleted"
@@ -40,7 +38,7 @@
     {todo}
   </p>
   <button
-    on:click={() => todoList.deleteTodo(todoItem)}
+    on:click={() => todoList.deleteTodo(id)}
     class="invisible ml-auto group-hover:visible"
   >
     <svg

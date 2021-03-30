@@ -1,5 +1,4 @@
 <script>
-  import { nanoid } from "nanoid";
   import todos from "../todoStore.js";
 
   export let prefersDarkMode;
@@ -8,11 +7,7 @@
   let todoInput = "";
 
   function handleSubmit() {
-    todos.createTodo({
-      id: nanoid(),
-      todo: todoInput,
-      isCompleted: false,
-    });
+    todos.createTodo(todoInput);
     todoInput = "";
   }
 </script>
