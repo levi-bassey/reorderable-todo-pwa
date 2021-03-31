@@ -2,11 +2,14 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   purge: {
+    enabled: true,
     content: ["./src/**/*.svelte", "./src/**/*.html"],
-    defaultExtractor: (content) => [
-      ...(content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []),
-      ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
-    ],
+    options: {
+      defaultExtractor: (content) => [
+        ...(content.match(/[^<>"'`\s]*[^<>"'`\s:]/g) || []),
+        ...(content.match(/(?<=class:)[^=>\/\s]*/g) || []),
+      ],
+    },
   },
   darkMode: "class", // or 'media' or 'class'
   theme: {
