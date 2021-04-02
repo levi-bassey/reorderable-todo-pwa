@@ -15,9 +15,7 @@ const assets = [
 //This event is triggered once this file executes
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches
-      .open(staticCacheName)
-      .then(cache => cache.addAll(assets).catch(console.log))
+    caches.open(staticCacheName).then(cache => cache.addAll(assets))
   );
 });
 
@@ -25,4 +23,10 @@ self.addEventListener("activate", event => {
   console.log("service worker is activating");
 });
 
-self.addEventListener("fetch", event => {});
+self.addEventListener("fetch", event => {
+  event.respondWith(
+    caches
+      .match(event.request)
+      .then(response => response ?? fetch(event.request))
+  );
+});
