@@ -10,11 +10,7 @@ module.exports = {
     /* Enable an SPA Fallback in development: */
     // {"match": "routes", "src": ".*", "dest": "/index.html"},
   ],
-  optimize: {
-    bundle: true,
-    minify: true,
-    target: "es2015",
-  },
+  optimize: {},
   packageOptions: {
     /* ... */
   },

@@ -15,6 +15,16 @@ const assets = [
   "dist/components/Header.svelte.js",
   "dist/components/TodoItem.svelte.js",
   "dist/components/TodoList.svelte.js",
+  "dist/_snowpack/pkg/idb.js",
+  "dist/_snowpack/pkg/nanoid.js",
+  "dist/_snowpack/pkg/import-map.json",
+  "dist/_snowpack/pkg/svelte/animate.js",
+  "dist/_snowpack/pkg/svelte/easing.js",
+  "dist/_snowpack/pkg/svelte/internal.js",
+  "dist/_snowpack/pkg/svelte/store.js",
+  "dist/_snowpack/pkg/svelte/transition.js",
+  "dist/_snowpack/pkg/common/index-724add65.js",
+  "dist/_snowpack/pkg/common/index-42821ab5.js",
   "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap",
 ];
 
@@ -31,6 +41,4 @@ self.addEventListener("activate", event => {
   console.log("service worker is activating");
 });
 
-self.addEventListener("fetch", event => {
-  console.log("fetched");
-});
+self.addEventListener("fetch", event => {});
