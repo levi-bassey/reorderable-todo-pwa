@@ -9,7 +9,6 @@ const assets = [
   "images/bg-desktop-light.jpg",
   "images/icon-check.svg",
   "dist/index.js",
-  "dist/index.js.map",
   "dist/App.svelte.js",
   "dist/todoStore.js",
   "dist/components/Checkbox.svelte.js",
@@ -33,5 +32,5 @@ self.addEventListener("activate", event => {
 });
 
 self.addEventListener("fetch", event => {
-  console.log("fetched", event);
+  console.log("fetched");
 });
