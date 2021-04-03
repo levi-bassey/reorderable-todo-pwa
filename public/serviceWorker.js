@@ -1,4 +1,5 @@
-const staticCacheName = "statics";
+const staticCacheName = "statics-v1";
+const dynamicCacheName = "dynamic-v1";
 const assets = [
   "/",
   "index.html",
@@ -10,23 +11,44 @@ const assets = [
   "images/icon-check.svg",
   "dist/index.js",
   "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap",
+  "https://fonts.gstatic.com/s/josefinsans/v17/Qw3aZQNVED7rKGKxtqIqX5EUAnx4RHw.woff2",
+  "https://fonts.gstatic.com/s/josefinsans/v17/Qw3aZQNVED7rKGKxtqIqX5EUDXx4.woff2",
 ];
 
-//This event is triggered once this file executes
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(staticCacheName).then(cache => cache.addAll(assets))
+    caches
+      .open(staticCacheName)
+      .then(cache => cache.addAll(assets))
+      .catch(error => console.log("Failed to install", error))
   );
 });
 
 self.addEventListener("activate", event => {
-  console.log("service worker is activating");
+  event.waitUntil(
+    caches
+      .keys()
+      .then(keys =>
+        Promise.all(
+          keys
+            .filter(key => key !== staticCacheName && key !== dynamicCacheName)
+            .map(key => caches.delete(key))
+        )
+      )
+  );
 });
 
 self.addEventListener("fetch", event => {
   event.respondWith(
-    caches
-      .match(event.request)
-      .then(response => response ?? fetch(event.request))
+    caches.match(event.request).then(
+      response =>
+        response ??
+        fetch(event.request).then(response =>
+          caches.open(dynamicCacheName).then(cache => {
+            cache.put(response.url, response.clone());
+            return response;
+          })
+        )
+    )
   );
 });
